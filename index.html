@@ -1,127 +1,91 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Для Сонечка</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4:11</title>
   <style>
     body {
       margin: 0;
-      background-color: #0d0d0d;
-      color: #f5f5f5;
-      font-family: 'Helvetica Neue', sans-serif;
+      padding: 0;
+      background-color: #0e0e0e;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
     }
 
-    .overlay {
+    .section {
+      height: 120vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5em;
+      padding: 0 2em;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bg-image {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: #0d0d0d;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
-
-    .password-box {
-      background: #1a1a1a;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-      text-align: center;
-    }
-
-    input[type="password"] {
-      padding: 10px;
-      border-radius: 6px;
-      border: none;
-      width: 200px;
-      font-size: 16px;
-      margin-top: 10px;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #ffdd57;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #ffe88a;
-    }
-
-    .content {
+      background-image: url('EYE_IMAGE_URL.jpg'); 
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
       opacity: 0;
-      padding: 0 20px;
-      max-width: 600px;
-      margin: 150px auto;
-      transition: opacity 1s ease-out;
-    }
-
-    .content.visible {
-      opacity: 1;
-    }
-
-    .eye-image {
-      width: 100%;
-      border-radius: 10px;
-      margin: 40px 0;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+      transition: opacity 0.2s ease-out;
+      pointer-events: none;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
-  <div class="overlay" id="overlay">
-    <div class="password-box">
-      <h2>Введи пароль</h2>
-      <input type="password" id="passwordInput" placeholder="Пароль" />
-      <br />
-      <button onclick="checkPassword()">Увійти</button>
-    </div>
+  <div class="bg-image" id="bgImage"></div>
+
+  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (1)</div>
+  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)</div>
+  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)</div>
+  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (4)</div>
+
+  <div class="section special" id="trigger">
+    Коли ти це читаєш — твої очі дивляться просто в душу 🖤
   </div>
 
-  <div class="content" id="mainContent">
-    <p>Випадкові рядки... С...покій... о...величезне небо... л...учі... н...евимовність... и...висота... ш...анс... к...осмос.</p>
-
-    <p>Я давно хотів це сказати.</p>
-
-    <p>Ти намалювала очі — і я досі не можу відвести погляд.</p>
-
-    <img class="eye-image" src="EYE_IMAGE_URL.jpg" alt="Намальовані очі" />
-
-    <p>Кожна деталь була точною. Теплою. Чарівною.</p>
-
-    <p>Ти вклала в них себе. Я це відчуваю й досі.</p>
-
-    <p>Мені є що сказати. Але спершу — дякую. За очі. За тепло. За нас.</p>
-  </div>
+  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (6)</div>
+  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (7)</div>
+  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (8)</div>
+  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (9)</div>
+  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (10)</div>
 
   <script>
-    function checkPassword() {
-      const input = document.getElementById('passwordInput').value;
-      if (input.toLowerCase() === 'сонечко') {
-        document.getElementById('overlay').style.display = 'none';
-        document.getElementById('mainContent').classList.add('visible');
-      } else {
-        alert('Невірний пароль :(');
+    const trigger = document.getElementById('trigger');
+    const bgImage = document.getElementById('bgImage');
+
+    function updateOpacity() {
+      const rect = trigger.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      const topPercent = rect.top / windowHeight * 100;
+      const bottomPercent = rect.bottom / windowHeight * 100;
+
+      let opacity = 0;
+
+      if (bottomPercent > 25 && topPercent < 75) {
+        const visibleRange = Math.min(bottomPercent, 75) - Math.max(topPercent, 25);
+        opacity = visibleRange / 50;
+        opacity = Math.min(Math.max(opacity, 0), 1);
       }
+
+      bgImage.style.opacity = opacity.toFixed(2);
     }
 
-    window.addEventListener('scroll', () => {
-      const content = document.getElementById('mainContent');
-      const rect = content.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        content.classList.add('visible');
-      }
-    });
+    window.addEventListener('scroll', updateOpacity);
+    window.addEventListener('resize', updateOpacity);
+    window.addEventListener('load', updateOpacity);
   </script>
 </body>
 </html>
