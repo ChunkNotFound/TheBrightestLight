@@ -26,13 +26,13 @@
       z-index: 2;
     }
 
-    .bg-image {
+    .bg-image, .bg-heart {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-image: url('EYE_IMAGE_URL.jpg');
+
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
@@ -40,6 +40,13 @@
       transition: opacity 0.2s ease-out;
       pointer-events: none;
       z-index: 1;
+    }
+    .bg-image {
+      background-image: url('EYE_IMAGE_URL.jpg');
+    }
+
+    .bg-heart {
+      background-image: url('yellow-heart.png');
     }
     .section.special {
       align-items: flex-start;
@@ -118,41 +125,46 @@
     </div>
   </div>
   <div class="bg-image" id="bgImage"></div>
+  <div class="bg-heart" id="bgHeart"></div>
 <div class="section">Я хочу піклуватися про неї, і в той же час хочу зосередитися на екзаменах.</div>
 <div class="section">Вона намалювала наші очі разом, вони виглядають так прекрасно, я не зміг сказати ні слова.</div>
 <div class="section">Я знаю, що нам потрібно це обговорити, але не можу зосередитися через екзамени.</div>
 <div class="section">Я не можу нічого запам'ятати, все в голові говорить тільки про тебе і як я погано до тебе віднісся.</div>
-<div class="section">Я дуже хочу з тобою поговорити і дуже багато обговорити, але після екзаменів.</div>
+<div class="section">Я дуже хочу з нею поговорити і дуже багато обговорити, але після екзаменів.</div>
 <div class="section">Розбиратися в почуттях важко, особливо в такому стані.</div>
 <div class="section">Мене вбиває туга і мовчання.</div>
 <div class="section">Мені так сумно, я не можу її залишити.</div>
-<div class="section">Як же прекрасний її голос, я такий радий його знову чути, я так хочу його чути завжди, не можу зараз нічого робити, крім як слухати його.</div>
+<div class="section">Який же прекрасний її голос, я такий радий його знову чути, я так хочу його чути завжди, не можу зараз нічого робити, окрім як слухати його.</div>
 <div class="section">Я не можу це втратити. Не хочу пропустити ні звуку.</div>
-<div class="section">Я просто хочу чути твій голос. Він такий теплий і ласкавий.</div>
+<div class="section">Я просто хочу чути її голос. Він такий теплий і ласкавий.</div>
 <div class="section">Ці слова, що ти говориш, вони такі ласкаві і милі. Який же милий і щирий момент зіпсований.</div>
-<div class="section">Я хочу бути завжди поруч і робити тебе щасливою.</div>
+<div class="section">Я хочу бути завжди поруч і робити її щасливою.</div>
 <div class="section special" id="trigger">
   <div class="lines">
-    <p>Ох, як же я хочу подивитися в твої очі. Я так сильно хочу побачити, як ти ними посміхаєшся.</p>
+    <p>Ох, як же я хочу подивитися в її очі. Я так сильно хочу побачити, як вона ними посміхаєшся.</p>
     <p>Твої очі такі прекрасні, я обожнюю в них дивитися навіть через фото.</p>
-    <p>Я мрію побачити твої очі наживо.</p>
+    <p>Я мрію побачити її очі наживо.</p>
   </div>
 </div>
-<div class="section">Я мрію доторкнутися до тебе наживо.</div>
-<div class="section">Ти як зустріч дома, в найзатишнішому будинку ввечері.</div>
-<div class="section">Ти найпрекрасніша і подарувала мені всі ці прекрасні моменти разом.</div>
-<div class="section">Ти зробила мене найщасливішою людиною на планеті.</div>
-<div class="section">Ти настільки розумна, що коли я роблю помилку, я відчуваю себе найгіршим у світі.</div>
-<div class="section">Ти не гідна жодної образливої дії щодо тебе.</div>
-<div class="section">Я хочу оберігати тебе.</div>
-<div class="section">Я хочу захищати тебе.</div>
-<div class="section">Ти найважливіша людина у моєму житті.</div>
-<div class="section">Я мрію зустріти тебе наживо і закохатися в тебе знову.</div>
+<div class="section">Я мрію доторкнутися до неї наживо.</div>
+<div class="section">Вона як зустріч дома, в найзатишнішому будинку ввечері.</div>
+<div class="section">Вона найпрекрасніша і подарувала мені всі ці прекрасні моменти разом.</div>
+<div class="section">Вона зробила мене найщасливішою людиною на планеті.</div>
+<div class="section">Вона настільки розумна, що коли я роблю помилку, я відчуваю себе найгіршим у світі.</div>
+<div class="section">Вона би заспокоїла мене тоді.</div>
+<div class="section">Вона не гідна жодної образливої дії щодо неї.</div>
+<div class="section">Я хочу оберігати її.</div>
+<div class="section">Я хочу захищати її.</div>
+<div class="section">Вона найважливіша людина у моєму житті.</div>
+<div class="section">Я мрію зустріти тебе наживо її закохатися в неї знову.</div>
+<div class="section" id="heartTrigger">Я кохаю лише тебе, Дара.</div>
 <div class="section">4:11.</div>
 
 <script>
-  const trigger = document.getElementById('trigger');
-  const bgImage = document.getElementById('bgImage');
+    const trigger = document.getElementById('trigger');
+    const bgImage = document.getElementById('bgImage');
+    const heartTrigger = document.getElementById('heartTrigger');
+    const bgHeart = document.getElementById('bgHeart');
 
   function updateOpacity() {
     const rect = trigger.getBoundingClientRect();
@@ -170,6 +182,12 @@
     }
 
     bgImage.style.opacity = opacity.toFixed(2);
+          const heartRect = heartTrigger.getBoundingClientRect();
+      const heartCenter = heartRect.top + heartRect.height / 2;
+      const screenCenter = window.innerHeight / 2;
+      const heartDistance = Math.abs(screenCenter - heartCenter);
+      const heartOpacity = Math.max(1 - heartDistance / (window.innerHeight * 0.25), 0);
+      bgHeart.style.opacity = heartOpacity.toFixed(2);
   }
 
   window.addEventListener('scroll', updateOpacity);
@@ -186,13 +204,7 @@
       }
     }
 
-    window.addEventListener('scroll', () => {
-      const content = document.getElementById('mainContent');
-      const rect = content.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        content.classList.add('visible');
-      }
-    });
+
 </script>
 </body>
 </html>
