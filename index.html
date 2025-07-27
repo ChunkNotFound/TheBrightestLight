@@ -15,7 +15,7 @@
     }
 
     .section {
-      height: 120vh;
+      height: 50vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -32,7 +32,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-image: url('EYE_IMAGE_URL.jpg'); 
+      background-image: url('EYE_IMAGE_URL.jpg');
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
@@ -41,51 +41,75 @@
       pointer-events: none;
       z-index: 1;
     }
+    .section.special {
+      align-items: flex-start;
+      padding-top: 10vh;
+    }
+
+    .section.special .lines p {
+      margin: 5vh 0;
+    }
   </style>
 </head>
 <body>
   <div class="bg-image" id="bgImage"></div>
-
-  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (1)</div>
-  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)</div>
-  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)</div>
-  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (4)</div>
-
-  <div class="section special" id="trigger">
-    Коли ти це читаєш — твої очі дивляться просто в душу 🖤
+<div class="section">Я хочу піклуватися про неї, і в той же час хочу зосередитися на екзаменах.</div>
+<div class="section">Вона намалювала наші очі разом, вони виглядають так прекрасно, я не зміг сказати ні слова.</div>
+<div class="section">Я знаю, що нам потрібно це обговорити, але не можу зосередитися через екзамени.</div>
+<div class="section">Я не можу нічого запам'ятати, все в голові говорить тільки про тебе і як я погано до тебе віднісся.</div>
+<div class="section">Я дуже хочу з тобою поговорити і дуже багато обговорити, але після екзаменів.</div>
+<div class="section">Розбиратися в почуттях важко, особливо в такому стані.</div>
+<div class="section">Мене вбиває туга і мовчання.</div>
+<div class="section">Мені так сумно, я не можу її залишити.</div>
+<div class="section">Як же прекрасний її голос, я такий радий його знову чути, я так хочу його чути завжди, не можу зараз нічого робити, крім як слухати його.</div>
+<div class="section">Я не можу це втратити. Не хочу пропустити ні звуку.</div>
+<div class="section">Я просто хочу чути твій голос. Він такий теплий і ласкавий.</div>
+<div class="section">Ці слова, що ти говориш, вони такі ласкаві і милі. Який же милий і щирий момент зіпсований.</div>
+<div class="section">Я хочу бути завжди поруч і робити тебе щасливою.</div>
+<div class="section special" id="trigger">
+  <div class="lines">
+    <p>Ох, як же я хочу подивитися в твої очі. Я так сильно хочу побачити, як ти ними посміхаєшся.</p>
+    <p>Твої очі такі прекрасні, я обожнюю в них дивитися навіть через фото.</p>
+    <p>Я мрію побачити твої очі наживо.</p>
   </div>
+</div>
+<div class="section">Я мрію доторкнутися до тебе наживо.</div>
+<div class="section">Ти як зустріч дома, в найзатишнішому будинку ввечері.</div>
+<div class="section">Ти найпрекрасніша і подарувала мені всі ці прекрасні моменти разом.</div>
+<div class="section">Ти зробила мене найщасливішою людиною на планеті.</div>
+<div class="section">Ти настільки розумна, що коли я роблю помилку, я відчуваю себе найгіршим у світі.</div>
+<div class="section">Ти не гідна жодної образливої дії щодо тебе.</div>
+<div class="section">Я хочу оберігати тебе.</div>
+<div class="section">Я хочу захищати тебе.</div>
+<div class="section">Ти найважливіша людина у моєму житті.</div>
+<div class="section">Я мрію зустріти тебе наживо і закохатися в тебе знову.</div>
+<div class="section">4:11.</div>
 
-  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (6)</div>
-  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (7)</div>
-  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (8)</div>
-  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (9)</div>
-  <div class="section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. (10)</div>
+<script>
+  const trigger = document.getElementById('trigger');
+  const bgImage = document.getElementById('bgImage');
 
-  <script>
-    const trigger = document.getElementById('trigger');
-    const bgImage = document.getElementById('bgImage');
+  function updateOpacity() {
+    const rect = trigger.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
 
-    function updateOpacity() {
-      const rect = trigger.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+    const topPercent = rect.top / windowHeight * 100;
+    const bottomPercent = rect.bottom / windowHeight * 100;
 
-      const topPercent = rect.top / windowHeight * 100;
-      const bottomPercent = rect.bottom / windowHeight * 100;
+    let opacity = 0;
 
-      let opacity = 0;
-
-      if (bottomPercent > 25 && topPercent < 75) {
-        const visibleRange = Math.min(bottomPercent, 75) - Math.max(topPercent, 25);
-        opacity = visibleRange / 50;
-        opacity = Math.min(Math.max(opacity, 0), 1);
-      }
-
-      bgImage.style.opacity = opacity.toFixed(2);
+    if (bottomPercent > 25 && topPercent < 75) {
+      const visibleRange = Math.min(bottomPercent, 75) - Math.max(topPercent, 25);
+      opacity = visibleRange / 50;
+      opacity = Math.min(Math.max(opacity, 0), 1);
     }
 
-    window.addEventListener('scroll', updateOpacity);
-    window.addEventListener('resize', updateOpacity);
-    window.addEventListener('load', updateOpacity);
-  </script>
+    bgImage.style.opacity = opacity.toFixed(2);
+  }
+
+  window.addEventListener('scroll', updateOpacity);
+  window.addEventListener('resize', updateOpacity);
+  window.addEventListener('load', updateOpacity);
+</script>
 </body>
 </html>
