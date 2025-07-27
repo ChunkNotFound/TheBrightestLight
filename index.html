@@ -49,9 +49,74 @@
     .section.special .lines p {
       margin: 5vh 0;
     }
+
+        .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0d0d0d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .password-box {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      width: 200px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ffdd57;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ffe88a;
+    }
+
+    .content {
+      opacity: 0;
+      padding: 0 20px;
+      max-width: 600px;
+      margin: 150px auto;
+      transition: opacity 1s ease-out;
+    }
+
+    .content.visible {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
+    <div class="overlay" id="overlay">
+    <div class="password-box">
+      <h2>Введи пароль</h2>
+      <input type="password" id="passwordInput" placeholder="Пароль" />
+      <br />
+      <button onclick="checkPassword()">Увійти</button>
+    </div>
+  </div>
   <div class="bg-image" id="bgImage"></div>
 <div class="section">Я хочу піклуватися про неї, і в той же час хочу зосередитися на екзаменах.</div>
 <div class="section">Вона намалювала наші очі разом, вони виглядають так прекрасно, я не зміг сказати ні слова.</div>
@@ -110,6 +175,24 @@
   window.addEventListener('scroll', updateOpacity);
   window.addEventListener('resize', updateOpacity);
   window.addEventListener('load', updateOpacity);
+
+      function checkPassword() {
+      const input = document.getElementById('passwordInput').value;
+      if (input.toLowerCase() === 'сонечко') {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('mainContent').classList.add('visible');
+      } else {
+        alert('Невірний пароль :(');
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      const content = document.getElementById('mainContent');
+      const rect = content.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        content.classList.add('visible');
+      }
+    });
 </script>
 </body>
 </html>
